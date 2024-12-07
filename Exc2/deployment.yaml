@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insuretech-deployment
+  labels:
+    app: insuretech
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insuretech
+  template:
+    metadata:
+      labels:
+        app: insuretech
+    spec:
+      containers:
+      - name: insuretech
+        image: docker.io/shestera/scaletestapp:latest
+        resources:
+          requests:
+            memory: "10Mi"
+          limits:
+            memory: "12Mi"
+        ports:
+        - containerPort: 8080
